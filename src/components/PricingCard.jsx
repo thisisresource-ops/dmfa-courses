@@ -14,15 +14,20 @@ export default function PricingCard({ tier }) {
 
     setLoading(true)
     try {
+      // Get auth token for authenticated checkout
+      const session = await (await import('../lib/supabase')).supabase?.auth.getSession()
+      const token = session?.data?.session?.access_token
+
       const res = await fetch(config.webhooks.createCheckout, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+          ...(token ? { Authorization: `Bearer ${token}` } : {}),
+        },
         body: JSON.stringify({
           priceId: tier.stripePriceId,
           email: user?.email || '',
           userId: user?.id || '',
-          successUrl: window.location.origin + '/dashboard',
-          cancelUrl: window.location.origin + '/pricing',
         })
       })
 

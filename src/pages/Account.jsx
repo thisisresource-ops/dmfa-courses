@@ -25,7 +25,7 @@ export default function Account() {
         },
         body: JSON.stringify({
           customerId: profile.stripe_customer_id,
-          returnUrl: window.location.href,
+          returnUrl: window.location.origin + '/account',
         })
       })
 
