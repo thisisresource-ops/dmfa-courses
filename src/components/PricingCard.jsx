@@ -38,7 +38,8 @@ export default function PricingCard({ tier }) {
 
   return (
     <div className={`pricing-card ${tier.popular ? 'popular' : ''}`}>
-      {tier.popular && <div className="pricing-badge">Best Value</div>}
+      {tier.badge && <div className="pricing-badge">{tier.badge}</div>}
+      {tier.savings && !tier.badge && <div className="pricing-badge">{tier.savings}</div>}
 
       <h3 className="pricing-name">{tier.name}</h3>
 
@@ -53,19 +54,14 @@ export default function PricingCard({ tier }) {
 
       <div className="pricing-interval">per {tier.interval}</div>
 
-      {tier.savings && (
-        <div className="pricing-savings">Save {tier.savings}</div>
-      )}
+      {tier.savings && <div className="pricing-savings">{tier.savings}</div>}
 
       <p className="pricing-desc">{tier.description}</p>
 
       <ul className="pricing-features">
-        <li>All 6 courses</li>
-        <li>100+ video lessons</li>
-        <li>Progress tracking</li>
-        <li>Personal notes</li>
-        <li>New content added regularly</li>
-        <li>Cancel anytime</li>
+        {(tier.features || []).map((f, i) => (
+          <li key={i}>{f}</li>
+        ))}
       </ul>
 
       <button
@@ -73,7 +69,7 @@ export default function PricingCard({ tier }) {
         onClick={handleSubscribe}
         disabled={loading}
       >
-        {loading ? 'Loading...' : 'Subscribe Now'}
+        {loading ? 'Loading...' : 'Get Started'}
       </button>
     </div>
   )

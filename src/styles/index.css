@@ -1,25 +1,24 @@
 /* Dan McGowan Fight Academy - Global Styles */
-
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Oswald:wght@400;500;600;700&display=swap');
+/* Matching original danmcgowanfightacademy.com design */
 
 :root {
-  /* Theme colors */
-  --bg-primary: #0a0a0a;
-  --bg-secondary: #111111;
-  --bg-tertiary: #1a1a1a;
-  --bg-card: #141414;
-  --border: #2a2a2a;
-  --border-light: #333333;
+  /* Theme colors - matched from original site */
+  --bg-primary: #050505;
+  --bg-secondary: #09090b;
+  --bg-tertiary: #18181b;
+  --bg-card: #0d0d0d;
+  --border: #262626;
+  --border-light: #3f3f46;
 
-  /* Accent - Fight red */
-  --accent: #dc2626;
-  --accent-dim: #b91c1c;
-  --accent-glow: rgba(220, 38, 38, 0.15);
+  /* Accent - McGowan green */
+  --accent: #52ad53;
+  --accent-dim: #4a9c4a;
+  --accent-glow: rgba(82, 173, 83, 0.2);
 
   /* Text colors */
-  --text-primary: #ffffff;
-  --text-secondary: #b0b0b0;
-  --text-muted: #666666;
+  --text-primary: #f2f2f2;
+  --text-secondary: #a1a1aa;
+  --text-muted: #52525b;
 
   /* Status */
   --success: #22c55e;
@@ -27,9 +26,9 @@
   --danger: #ef4444;
   --error: #ff6b6b;
 
-  /* Fonts */
-  --font: 'Inter', sans-serif;
-  --font-heading: 'Oswald', sans-serif;
+  /* Fonts - Geist (original site font) with fallbacks */
+  --font: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-heading: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
 * {
@@ -54,9 +53,8 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
-  font-weight: 600;
-  letter-spacing: 1px;
-  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: -0.025em;
 }
 
 a {
@@ -122,7 +120,7 @@ input, textarea { font-family: var(--font); -webkit-tap-highlight-color: transpa
   border-bottom: 1px solid var(--border);
   position: sticky;
   top: 0;
-  background: rgba(10, 10, 10, 0.95);
+  background: rgba(5, 5, 5, 0.95);
   backdrop-filter: blur(10px);
   z-index: 100;
 }
@@ -813,7 +811,7 @@ input, textarea { font-family: var(--font); -webkit-tap-highlight-color: transpa
 
 .lesson-item.active {
   border-color: var(--accent);
-  background: rgba(220, 38, 38, 0.05);
+  background: rgba(82, 173, 83, 0.05);
 }
 
 .lesson-number {

@@ -32,7 +32,7 @@ export default function Login() {
       <div className="auth-card">
         <div className="auth-logo">
           <div className="auth-logo-text">
-            <span className="text-accent">DMFA</span> Courses
+            <span className="text-accent">McGowan</span> Muay Thai
           </div>
         </div>
 

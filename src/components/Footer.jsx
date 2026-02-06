@@ -1,19 +1,19 @@
 import { Link } from 'react-router-dom'
+import { config } from '../config'
 
 export default function Footer() {
   return (
     <footer className="footer">
+      <img src={config.logoUrl} alt={config.businessName} style={{ height: '48px', marginBottom: '12px' }} onError={(e) => { e.target.style.display = 'none' }} />
       <div className="footer-brand">
-        <span className="text-accent">DMFA</span> Courses
+        <span className="text-accent">McGowan</span> Muay Thai
       </div>
       <p className="footer-text">
-        Dan McGowan Fight Academy &mdash; 2x World Champion Muay Thai
+        Authentic Muay Thai. World Champion Training.
       </p>
-      <div className="footer-links">
-        <Link to="/pricing">Pricing</Link>
-        <Link to="/login">Sign In</Link>
-        <a href="https://www.instagram.com/mcgowanmuaythai/" target="_blank" rel="noopener noreferrer">Instagram</a>
-      </div>
+      <p className="footer-text" style={{ marginTop: '16px' }}>
+        &copy; {new Date().getFullYear()} McGowan Muay Thai. All rights reserved.
+      </p>
     </footer>
   )
 }

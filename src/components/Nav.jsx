@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
+import { config } from '../config'
 
 export default function Nav() {
   const { isAuthenticated, user, profile, signOut } = useAuth()
@@ -18,8 +19,9 @@ export default function Nav() {
   return (
     <nav className="nav">
       <Link to="/" className="nav-logo">
+        <img src={config.logoUrl} alt={config.businessName} style={{ height: '36px' }} onError={(e) => { e.target.style.display = 'none' }} />
         <span className="nav-logo-text">
-          <span className="nav-logo-accent">DMFA</span> Courses
+          <span className="nav-logo-accent">McGowan</span> Muay Thai
         </span>
       </Link>
 
@@ -31,7 +33,7 @@ export default function Nav() {
         {isAuthenticated ? (
           <>
             <Link to="/dashboard" className={isActive('/dashboard')} onClick={() => setMenuOpen(false)}>
-              Courses
+              Training
             </Link>
             <Link to="/account" className={isActive('/account')} onClick={() => setMenuOpen(false)}>
               Account
@@ -45,17 +47,20 @@ export default function Nav() {
           </>
         ) : (
           <>
-            <Link to="/" className={isActive('/')} onClick={() => setMenuOpen(false)}>
-              Home
-            </Link>
-            <Link to="/pricing" className={isActive('/pricing')} onClick={() => setMenuOpen(false)}>
-              Pricing
-            </Link>
+            <a href="#credentials" className="nav-link" onClick={() => setMenuOpen(false)}>
+              About Dan
+            </a>
+            <a href="#training" className="nav-link" onClick={() => setMenuOpen(false)}>
+              Training
+            </a>
+            <a href="#credentials-section" className="nav-link" onClick={() => setMenuOpen(false)}>
+              Credentials
+            </a>
             <Link to="/login" className={isActive('/login')} onClick={() => setMenuOpen(false)}>
-              Sign In
+              Login
             </Link>
             <Link to="/register" className="btn btn-sm" onClick={() => setMenuOpen(false)} style={{ textDecoration: 'none' }}>
-              Get Started
+              Sign Up
             </Link>
           </>
         )}
