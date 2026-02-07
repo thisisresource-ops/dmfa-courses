@@ -44,7 +44,7 @@ export default function Landing() {
         <div className="section" style={{ paddingTop: '60px', paddingBottom: '60px' }}>
           <div className="section-header">
             <p className="section-label">Fighter Credentials</p>
-            <h2 className="section-title">Dan McGowan's Record</h2>
+            <h2 className="section-title" style={{ textTransform: 'uppercase' }}>Dan McGowan's <span className="accent">Record</span></h2>
           </div>
           <div className="credentials-grid">
             {config.credentials.map((cred, i) => (
