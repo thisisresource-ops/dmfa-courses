@@ -6,11 +6,30 @@ export default function Landing() {
   return (
     <div>
       {/* Hero */}
-      <section className="hero" style={{
-        background: `linear-gradient(to bottom, rgba(0,0,0,0.9), rgba(0,0,0,0.7), rgba(5,5,5,1)), url(${config.heroImage})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center top',
-      }}>
+      <section className="hero" style={{ position: 'relative', overflow: 'hidden' }}>
+        {/* Background image at low opacity like original */}
+        <div style={{
+          position: 'absolute', inset: 0, zIndex: 0,
+        }}>
+          <img
+            src={config.heroImage}
+            alt=""
+            style={{
+              position: 'absolute', width: '100%', height: '100%',
+              objectFit: 'cover', objectPosition: 'center top',
+              opacity: 0.4,
+            }}
+          />
+          {/* Gradient overlay */}
+          <div style={{
+            position: 'absolute', inset: 0,
+            background: 'linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(0,0,0,0.4), #000000)',
+          }} />
+        </div>
+        {/* Green glow orbs */}
+        <div className="hero-glow-1" />
+        <div className="hero-glow-2" />
+        <div style={{ position: 'relative', zIndex: 1 }}>
         <h1 className="hero-title">
           Elite <span className="accent">Muay Thai</span><br />Training
         </h1>
@@ -39,6 +58,7 @@ export default function Landing() {
             <div className="hero-stat-value">10+</div>
             <div className="hero-stat-label">Years Coaching</div>
           </div>
+        </div>
         </div>
       </section>
 

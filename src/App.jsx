@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route, Navigate, Outlet } from 'react-router-dom'
 import { AuthProvider, useAuth } from './context/AuthContext'
+import PasswordGate from './components/PasswordGate'
 import { ProgressProvider } from './context/ProgressContext'
 import Nav from './components/Nav'
 import Landing from './pages/Landing'
@@ -68,6 +69,7 @@ function AuthLayout() {
 
 export default function App() {
   return (
+    <PasswordGate>
     <AuthProvider>
       <BrowserRouter>
         <Routes>
@@ -96,5 +98,6 @@ export default function App() {
         </Routes>
       </BrowserRouter>
     </AuthProvider>
+    </PasswordGate>
   )
 }

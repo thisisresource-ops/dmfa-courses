@@ -50,7 +50,7 @@ export default function Nav() {
             <a href="#training" className="nav-link" onClick={() => setMenuOpen(false)}>
               Training
             </a>
-            <a href="#credentials-section" className="nav-link" onClick={() => setMenuOpen(false)}>
+            <a href="#credentials" className="nav-link" onClick={() => setMenuOpen(false)}>
               Credentials
             </a>
             <Link to="/login" className={isActive('/login')} onClick={() => setMenuOpen(false)}>

@@ -389,20 +389,20 @@ input, textarea { font-family: var(--font); -webkit-tap-highlight-color: transpa
 .hero-title .accent { color: var(--accent); }
 
 .hero-subtitle {
-  font-size: clamp(16px, 2.3vw, 20px);
+  font-size: clamp(18px, 2.8vw, 26px);
   color: var(--text-primary);
   max-width: 700px;
-  margin: 0 auto 2px;
+  margin: 0 auto 12px;
   line-height: 1.4;
   font-family: var(--font);
   font-weight: 700;
 }
 
 .hero-desc {
-  font-size: clamp(15px, 2vw, 18px);
-  color: var(--text-primary);
+  font-size: clamp(12px, 1.5vw, 14px);
+  color: var(--text-secondary);
   max-width: 650px;
-  margin: 0 auto 2px;
+  margin: 0 auto 10px;
   line-height: 1.4;
 }
 
@@ -458,6 +458,40 @@ input, textarea { font-family: var(--font); -webkit-tap-highlight-color: transpa
   margin-top: 4px;
   line-height: 1;
   font-weight: 500;
+}
+
+.hero-glow-1 {
+  position: absolute;
+  top: 0;
+  left: 25%;
+  width: 384px;
+  height: 384px;
+  background: #52ad53;
+  border-radius: 50%;
+  filter: blur(120px);
+  opacity: 0.2;
+  animation: pulse 2s ease-in-out infinite;
+  z-index: 0;
+}
+
+.hero-glow-2 {
+  position: absolute;
+  bottom: 0;
+  right: 25%;
+  width: 384px;
+  height: 384px;
+  background: #52ad53;
+  border-radius: 50%;
+  filter: blur(120px);
+  opacity: 0.1;
+  animation: pulse 2s ease-in-out infinite;
+  animation-delay: 1s;
+  z-index: 0;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.15; }
+  50% { opacity: 0.25; }
 }
 
 .hero-cta {
