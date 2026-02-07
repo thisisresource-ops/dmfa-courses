@@ -46,7 +46,7 @@
 
 html, body {
   font-family: var(--font);
-  font-size: 16px;
+  font-size: 18px;
   line-height: 1.5;
   background-color: var(--bg-primary);
   color: var(--text-primary);
@@ -168,7 +168,7 @@ input, textarea { font-family: var(--font); -webkit-tap-highlight-color: transpa
 .nav-link {
   background: none;
   border: none;
-  font-size: clamp(11px, 1.2vw, 13px);
+  font-size: clamp(12px, 1.3vw, 15px);
   letter-spacing: 0.1em;
   text-transform: uppercase;
   font-family: var(--font);
