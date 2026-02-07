@@ -2,7 +2,7 @@
 /* Matched to original danmcgowanfightacademy.com design */
 
 /* Geist Font (matches original) */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+/* Font loaded via index.html <link> for faster rendering */
 
 :root {
   /* Theme colors - matched from original site CSS */

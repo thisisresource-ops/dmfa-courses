@@ -26,13 +26,18 @@ export function AuthProvider({ children }) {
       return
     }
 
-    // Get initial session
+    // Get initial session with timeout to prevent hanging
+    const timeout = setTimeout(() => setIsLoading(false), 3000)
     supabase.auth.getSession().then(async ({ data: { session } }) => {
+      clearTimeout(timeout)
       if (session?.user) {
         setUser(session.user)
         const p = await fetchProfile(session.user.id)
         setProfile(p)
       }
+      setIsLoading(false)
+    }).catch(() => {
+      clearTimeout(timeout)
       setIsLoading(false)
     })
 
