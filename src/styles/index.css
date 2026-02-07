@@ -354,7 +354,7 @@ input, textarea { font-family: var(--font); -webkit-tap-highlight-color: transpa
 /* ======================== */
 
 .hero {
-  padding: clamp(60px, 10vw, 120px) clamp(20px, 4vw, 40px);
+  padding: clamp(30px, 6vw, 70px) clamp(20px, 4vw, 40px);
   text-align: center;
   position: relative;
   overflow: hidden;
@@ -427,10 +427,18 @@ input, textarea { font-family: var(--font); -webkit-tap-highlight-color: transpa
   flex: 1;
   text-align: center;
   padding: 28px 40px;
-  background: rgba(0, 0, 0, 0.8);
-  border: 1px solid rgba(82, 173, 83, 0.3);
+  background: #000000;
+  border: 1px solid var(--border);
   border-radius: 12px;
   min-width: 160px;
+  transition: all 0.3s;
+}
+
+.hero-stat:hover {
+  border-color: var(--accent);
+  background: #000000;
+  transform: scale(1.05);
+  box-shadow: 0 0 25px rgba(82, 173, 83, 0.4), 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
 .hero-stat-value {
