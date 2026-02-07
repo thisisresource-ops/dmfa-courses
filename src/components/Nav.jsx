@@ -19,10 +19,7 @@ export default function Nav() {
   return (
     <nav className="nav">
       <Link to="/" className="nav-logo">
-        <img src={config.logoUrl} alt={config.businessName} style={{ height: '36px' }} onError={(e) => { e.target.style.display = 'none' }} />
-        <span className="nav-logo-text">
-          <span className="nav-logo-accent">McGowan</span> Muay Thai
-        </span>
+        <img src={config.logoUrl} alt={config.businessName} style={{ height: '80px' }} onError={(e) => { e.target.style.display = 'none' }} />
       </Link>
 
       <button className="nav-mobile-toggle" onClick={() => setMenuOpen(!menuOpen)}>
@@ -59,7 +56,7 @@ export default function Nav() {
             <Link to="/login" className={isActive('/login')} onClick={() => setMenuOpen(false)}>
               Login
             </Link>
-            <Link to="/register" className="btn btn-sm" onClick={() => setMenuOpen(false)} style={{ textDecoration: 'none' }}>
+            <Link to="/register" className="btn" onClick={() => setMenuOpen(false)} style={{ textDecoration: 'none', padding: '8px 18px', textTransform: 'uppercase', letterSpacing: '0.1em', fontSize: '13px', borderRadius: '8px' }}>
               Sign Up
             </Link>
           </>

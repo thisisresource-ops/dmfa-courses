@@ -6,7 +6,7 @@
 
 :root {
   /* Theme colors - matched from original site CSS */
-  --bg-primary: hsl(0 0% 2%);
+  --bg-primary: #000000;
   --bg-secondary: #09090b;
   --bg-tertiary: #18181b;
   --bg-card: #18181b;
@@ -35,7 +35,7 @@
   --font-heading: 'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 
   /* Radius */
-  --radius: 0.5rem;
+  --radius: 20px;
 }
 
 * {
@@ -125,7 +125,7 @@ input, textarea { font-family: var(--font); -webkit-tap-highlight-color: transpa
 /* ======================== */
 
 .nav {
-  padding: 16px 40px;
+  padding: 0 clamp(16px, 4vw, 40px);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -168,19 +168,19 @@ input, textarea { font-family: var(--font); -webkit-tap-highlight-color: transpa
 .nav-link {
   background: none;
   border: none;
-  font-size: 13px;
+  font-size: clamp(11px, 1.2vw, 13px);
   letter-spacing: 0.1em;
   text-transform: uppercase;
   font-family: var(--font);
-  font-weight: 500;
-  color: var(--text-muted);
+  font-weight: 600;
+  color: var(--text-primary);
   transition: color 0.3s;
   text-decoration: none;
   padding: 8px 0;
 }
 
 .nav-link:hover, .nav-link.active {
-  color: var(--text-primary);
+  color: var(--accent);
 }
 
 .nav-user {
@@ -216,12 +216,12 @@ input, textarea { font-family: var(--font); -webkit-tap-highlight-color: transpa
 /* ======================== */
 
 .btn {
-  background-color: var(--accent);
+  background: linear-gradient(135deg, #5ec45f, #3d8c3e);
   color: white;
   padding: 16px 24px;
   border: none;
   border-radius: var(--radius);
-  font-weight: 600;
+  font-weight: 700;
   font-family: var(--font);
   font-size: 16px;
   transition: all 0.3s;
@@ -229,13 +229,35 @@ input, textarea { font-family: var(--font); -webkit-tap-highlight-color: transpa
   text-align: center;
   text-decoration: none;
   cursor: pointer;
+  box-shadow: 0 0 25px rgba(82, 173, 83, 0.4), 0 4px 15px rgba(0, 0, 0, 0.4);
 }
 
-.btn:hover { background-color: var(--accent-dim); color: white; }
+.btn:hover {
+  background: linear-gradient(135deg, #6dd06e, #52ad53);
+  color: white;
+  box-shadow: 0 0 40px rgba(82, 173, 83, 0.6), 0 8px 25px rgba(0, 0, 0, 0.5);
+  transform: translateY(-3px);
+}
 .btn:disabled { opacity: 0.5; cursor: not-allowed; }
-.btn-sm { padding: 10px 20px; font-size: 14px; }
-.btn-lg { padding: 20px 32px; font-size: 18px; }
+.btn-sm { padding: 10px 20px; font-size: 14px; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700; }
+.btn-lg { padding: 20px 48px; font-size: 28px; text-transform: uppercase; letter-spacing: 0.02em; font-weight: 900; border-radius: 8px; }
 .btn-full { width: 100%; }
+
+.btn-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.btn-arrow {
+  display: inline-block;
+  font-size: 20px;
+  transition: transform 0.3s;
+}
+
+.btn-cta:hover .btn-arrow {
+  transform: translateX(6px);
+}
 
 .btn-outline {
   background-color: transparent;
@@ -243,7 +265,7 @@ input, textarea { font-family: var(--font); -webkit-tap-highlight-color: transpa
   padding: 16px 24px;
   border: 1px solid var(--accent);
   border-radius: var(--radius);
-  font-weight: 600;
+  font-weight: 700;
   font-family: var(--font);
   font-size: 16px;
   transition: all 0.3s;
@@ -256,6 +278,8 @@ input, textarea { font-family: var(--font); -webkit-tap-highlight-color: transpa
 .btn-outline:hover {
   background-color: var(--accent);
   color: white;
+  box-shadow: 0 0 30px rgba(82, 173, 83, 0.5), 0 6px 20px rgba(0, 0, 0, 0.4);
+  transform: translateY(-2px);
 }
 
 .btn-ghost {
@@ -330,7 +354,7 @@ input, textarea { font-family: var(--font); -webkit-tap-highlight-color: transpa
 /* ======================== */
 
 .hero {
-  padding: 128px 40px;
+  padding: clamp(60px, 10vw, 120px) clamp(20px, 4vw, 40px);
   text-align: center;
   position: relative;
   overflow: hidden;
@@ -353,7 +377,7 @@ input, textarea { font-family: var(--font); -webkit-tap-highlight-color: transpa
 
 .hero-title {
   font-family: var(--font-heading);
-  font-size: 6rem;
+  font-size: clamp(2rem, 7vw, 5.25rem);
   font-weight: 900;
   letter-spacing: -0.05em;
   text-transform: uppercase;
@@ -365,54 +389,66 @@ input, textarea { font-family: var(--font); -webkit-tap-highlight-color: transpa
 .hero-title .accent { color: var(--accent); }
 
 .hero-subtitle {
-  font-size: 20px;
-  color: var(--text-secondary);
+  font-size: clamp(16px, 2.3vw, 20px);
+  color: var(--text-primary);
   max-width: 700px;
-  margin: 0 auto 8px;
-  line-height: 1.75;
+  margin: 0 auto 2px;
+  line-height: 1.4;
   font-family: var(--font);
-  font-weight: 400;
+  font-weight: 700;
 }
 
 .hero-desc {
-  font-size: 16px;
-  color: var(--text-muted);
+  font-size: clamp(15px, 2vw, 18px);
+  color: var(--text-primary);
   max-width: 650px;
-  margin: 0 auto 32px;
-  line-height: 1.75;
+  margin: 0 auto 2px;
+  line-height: 1.4;
+}
+
+.hero-desc:last-of-type {
+  margin-bottom: 32px;
 }
 
 .hero-stats {
   display: flex;
   justify-content: center;
-  gap: 16px;
-  margin-top: 48px;
+  gap: clamp(10px, 1.5vw, 16px);
+  margin-top: clamp(20px, 3vw, 36px);
   flex-wrap: wrap;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  padding: 0 clamp(16px, 4vw, 40px);
 }
 
 .hero-stat {
+  flex: 1;
   text-align: center;
-  padding: 12px 24px;
-  background: rgba(82, 173, 83, 0.1);
-  border: 1px solid rgba(82, 173, 83, 0.5);
-  border-radius: 4px;
+  padding: 28px 40px;
+  background: rgba(0, 0, 0, 0.8);
+  border: 1px solid rgba(82, 173, 83, 0.3);
+  border-radius: 12px;
   min-width: 160px;
 }
 
 .hero-stat-value {
   font-family: var(--font-heading);
-  font-size: 24px;
+  font-size: clamp(28px, 4vw, 44px);
   font-weight: 900;
   color: var(--accent);
   letter-spacing: -0.02em;
+  line-height: 1;
 }
 
 .hero-stat-label {
-  font-size: 12px;
+  font-size: 14px;
   color: var(--text-secondary);
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  margin-top: 2px;
+  margin-top: 4px;
+  line-height: 1;
   font-weight: 500;
 }
 
@@ -428,19 +464,19 @@ input, textarea { font-family: var(--font); -webkit-tap-highlight-color: transpa
 /* ======================== */
 
 .section {
-  padding: 80px 40px;
+  padding: clamp(48px, 6vw, 80px) clamp(20px, 4vw, 40px);
   max-width: 1200px;
   margin: 0 auto;
 }
 
 .section-dark {
-  background: linear-gradient(to bottom, #09090b, #000000);
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
+  background: #000000;
+  box-shadow: 0 -20px 40px rgba(0, 0, 0, 0.8), 0 20px 40px rgba(0, 0, 0, 0.8);
 }
 
 .section-gradient {
-  background: linear-gradient(to bottom, var(--bg-primary), #09090b);
+  background: #000000;
+  box-shadow: 0 -20px 40px rgba(0, 0, 0, 0.8), 0 20px 40px rgba(0, 0, 0, 0.8);
 }
 
 .section-header {
@@ -449,20 +485,20 @@ input, textarea { font-family: var(--font); -webkit-tap-highlight-color: transpa
 }
 
 .section-label {
-  font-size: 12px;
+  font-size: 14px;
   letter-spacing: 0.1em;
-  color: var(--text-muted);
+  color: var(--accent);
   text-transform: uppercase;
   margin-bottom: 12px;
-  font-weight: 500;
+  font-weight: 700;
 }
 
 .section-title {
   font-family: var(--font-heading);
-  font-size: 36px;
+  font-size: clamp(36px, 6vw, 56px);
   font-weight: 900;
   color: var(--text-primary);
-  letter-spacing: -0.05em;
+  letter-spacing: 0.03em;
 }
 
 .section-title .accent {
@@ -492,15 +528,22 @@ input, textarea { font-family: var(--font); -webkit-tap-highlight-color: transpa
 
 .credential-item {
   padding: 24px;
-  background: var(--bg-card);
+  background: linear-gradient(to right, #141416, #000000);
   border: 1px solid var(--border);
   border-radius: var(--radius);
   transition: all 0.3s;
+  box-shadow: 0 0 10px rgba(82, 173, 83, 0.08), 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .credential-item:hover {
-  border-color: rgba(82, 173, 83, 0.3);
-  background: rgba(82, 173, 83, 0.05);
+  border-color: rgba(82, 173, 83, 0.5);
+  background: rgba(82, 173, 83, 0.08);
+  transform: scale(1.05);
+  box-shadow: 0 0 30px rgba(82, 173, 83, 0.5), 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+.credential-item:hover .credential-title {
+  color: var(--accent);
 }
 
 .credential-icon {
@@ -510,15 +553,15 @@ input, textarea { font-family: var(--font); -webkit-tap-highlight-color: transpa
 
 .credential-title {
   font-family: var(--font-heading);
-  font-size: 16px;
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  margin-bottom: 4px;
-  color: var(--accent);
+  font-size: 20px;
+  font-weight: 900;
+  letter-spacing: 0.03em;
+  margin-bottom: 8px;
+  color: var(--text-primary);
 }
 
 .credential-desc {
-  font-size: 14px;
+  font-size: 16px;
   color: var(--text-muted);
   font-weight: 400;
 }
@@ -529,8 +572,8 @@ input, textarea { font-family: var(--font); -webkit-tap-highlight-color: transpa
 
 .documentary-section {
   text-align: center;
-  padding: 80px 40px;
-  max-width: 800px;
+  padding: clamp(64px, 8vw, 120px) clamp(30px, 5vw, 60px);
+  max-width: 900px;
   margin: 0 auto;
 }
 
@@ -550,17 +593,38 @@ input, textarea { font-family: var(--font); -webkit-tap-highlight-color: transpa
 
 .documentary-title {
   font-family: var(--font-heading);
-  font-size: 36px;
+  font-size: clamp(36px, 6vw, 56px);
   font-weight: 900;
-  letter-spacing: -0.05em;
+  letter-spacing: 0.03em;
   margin-bottom: 16px;
 }
+
+.documentary-title .accent { color: var(--accent); }
 
 .documentary-text {
   font-size: 18px;
   color: var(--text-secondary);
-  margin-bottom: 8px;
+  margin-bottom: 24px;
   line-height: 1.7;
+}
+
+.documentary-video {
+  position: relative;
+  width: 100%;
+  max-width: 1300px;
+  margin: 0 auto 24px;
+  padding-bottom: 50.625%;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 3px solid var(--accent);
+}
+
+.documentary-video iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 
 .documentary-subtext {
@@ -580,17 +644,24 @@ input, textarea { font-family: var(--font); -webkit-tap-highlight-color: transpa
 }
 
 .course-card {
-  background-color: var(--bg-card);
-  border: 1px solid var(--border);
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(82, 173, 83, 0.3);
   border-radius: var(--radius);
   overflow: hidden;
   transition: all 0.3s;
   cursor: default;
+  box-shadow: 0 0 10px rgba(82, 173, 83, 0.08), 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .course-card:hover {
-  border-color: rgba(82, 173, 83, 0.3);
-  transform: scale(1.02);
+  border-color: rgba(82, 173, 83, 0.5);
+  background: rgba(82, 173, 83, 0.08);
+  transform: scale(1.05);
+  box-shadow: 0 0 30px rgba(82, 173, 83, 0.5), 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+.course-card:hover .course-card-title {
+  color: var(--accent);
 }
 
 .course-card-thumb {
@@ -643,37 +714,55 @@ input, textarea { font-family: var(--font); -webkit-tap-highlight-color: transpa
 /* ======================== */
 
 .training-list {
-  max-width: 700px;
+  max-width: 900px;
   margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
 }
 
 .training-item {
   display: flex;
-  align-items: center;
-  gap: 16px;
-  padding: 16px 24px;
-  background: var(--bg-card);
+  align-items: flex-start;
+  gap: 12px;
+  padding: 16px 20px;
+  background: linear-gradient(to right, #141416, #000000);
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  margin-bottom: 8px;
   transition: all 0.3s;
 }
 
 .training-item:hover {
-  border-color: rgba(82, 173, 83, 0.3);
+  border-color: var(--accent);
+  transform: scale(1.03);
+  box-shadow: 0 0 25px rgba(82, 173, 83, 0.4), 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.training-item:hover .training-text {
+  color: var(--text-primary);
 }
 
 .training-check {
+  width: 24px;
+  height: 24px;
+  min-width: 24px;
+  background: rgba(82, 173, 83, 0.15);
   color: var(--accent);
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
   font-weight: bold;
   flex-shrink: 0;
-  font-size: 16px;
+  margin-top: 2px;
 }
 
 .training-text {
   color: var(--text-secondary);
-  font-size: 15px;
-  line-height: 1.6;
+  font-size: 16px;
+  line-height: 1.5;
+  transition: color 0.3s;
 }
 
 /* ======================== */
@@ -684,27 +773,53 @@ input, textarea { font-family: var(--font); -webkit-tap-highlight-color: transpa
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 16px;
-  align-items: start;
+  align-items: stretch;
+  max-width: 1000px;
+  margin: 0 auto;
 }
 
 .pricing-card {
-  background-color: var(--bg-card);
+  background: linear-gradient(to right, #141416, #000000);
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  padding: 32px;
+  padding: 14px 32px;
   text-align: center;
   transition: all 0.3s;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 0 10px rgba(82, 173, 83, 0.08), 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .pricing-card:hover {
-  border-color: rgba(82, 173, 83, 0.3);
-  transform: translateY(-4px);
+  border-color: rgba(82, 173, 83, 0.5);
+  background: rgba(82, 173, 83, 0.08);
+  transform: scale(1.05);
+  box-shadow: 0 0 30px rgba(82, 173, 83, 0.5), 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+.pricing-card:hover .pricing-name {
+  color: var(--accent);
 }
 
 .pricing-card.popular {
   border: 2px solid var(--accent);
-  box-shadow: 0 10px 15px -3px var(--accent-glow-strong);
+  box-shadow: 0 0 25px rgba(82, 173, 83, 0.4), 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  transform: scale(1.05);
+  padding: 20px 32px;
+}
+
+.pricing-card .btn {
+  border-radius: 4px;
+}
+
+.pricing-card:not(.popular) .btn {
+  background: #2a2a2e;
+  box-shadow: none;
+}
+
+.pricing-card:not(.popular) .btn:hover {
+  background: #3a3a3e;
 }
 
 .pricing-badge {
@@ -717,42 +832,55 @@ input, textarea { font-family: var(--font); -webkit-tap-highlight-color: transpa
   padding: 4px 16px;
   border-radius: 9999px;
   font-size: 12px;
-  font-weight: 600;
+  font-weight: 900;
   letter-spacing: 0.05em;
   text-transform: uppercase;
   white-space: nowrap;
 }
 
+.pricing-badge-sale {
+  background: #ef4444;
+}
+
 .pricing-name {
   font-family: var(--font-heading);
-  font-size: 20px;
-  font-weight: 700;
+  font-size: 26px;
+  font-weight: 900;
   letter-spacing: -0.02em;
+  margin-top: 12px;
   margin-bottom: 16px;
 }
 
 .pricing-price {
   font-family: var(--font-heading);
-  font-size: 48px;
+  font-size: 44px;
   font-weight: 900;
   color: var(--accent);
   margin-bottom: 4px;
   letter-spacing: -0.05em;
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 2px;
+  flex-wrap: nowrap;
 }
 
 .pricing-price-symbol {
-  font-size: 24px;
-  vertical-align: super;
+  font-size: 44px;
+  vertical-align: baseline;
 }
 
 .pricing-interval {
-  font-size: 14px;
+  font-size: 16px;
   color: var(--text-muted);
-  margin-bottom: 8px;
+  margin-left: 2px;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
 }
 
 .pricing-original {
-  font-size: 14px;
+  font-size: 22px;
   color: var(--text-muted);
   text-decoration: line-through;
   margin-bottom: 8px;
@@ -776,24 +904,30 @@ input, textarea { font-family: var(--font); -webkit-tap-highlight-color: transpa
   font-weight: 400;
 }
 
+.pricing-card.popular .pricing-desc {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.pricing-desc-savings {
+  color: #ef4444;
+  font-weight: 600;
+}
+
 .pricing-features {
   list-style: none;
   text-align: left;
   margin-bottom: 24px;
+  flex: 1;
 }
 
 .pricing-features li {
-  padding: 8px 0;
+  padding: 4px 0;
   font-size: 14px;
-  color: var(--text-secondary);
-  border-bottom: 1px solid var(--border);
+  color: var(--text-primary);
   display: flex;
   align-items: center;
   gap: 10px;
-}
-
-.pricing-features li:last-child {
-  border-bottom: none;
 }
 
 .pricing-features li::before {
@@ -812,9 +946,6 @@ input, textarea { font-family: var(--font); -webkit-tap-highlight-color: transpa
   margin: 40px auto 0;
   text-align: center;
   padding: 24px;
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
 }
 
 .checkout-step {
@@ -839,23 +970,30 @@ input, textarea { font-family: var(--font); -webkit-tap-highlight-color: transpa
 
 .cta-section {
   text-align: center;
-  padding: 80px 40px;
+  padding: clamp(48px, 6vw, 80px) clamp(20px, 4vw, 40px);
   max-width: 700px;
   margin: 0 auto;
 }
 
 .cta-title {
   font-family: var(--font-heading);
-  font-size: 36px;
+  font-size: clamp(36px, 6vw, 56px);
   font-weight: 900;
-  letter-spacing: -0.05em;
+  letter-spacing: 0.03em;
   margin-bottom: 16px;
 }
 
 .cta-text {
-  font-size: 16px;
-  color: var(--text-secondary);
+  font-size: 20px;
+  color: var(--text-primary);
   margin-bottom: 12px;
+  line-height: 1.7;
+}
+
+.cta-text-sm {
+  font-size: 15px;
+  color: var(--text-secondary);
+  margin-bottom: 32px;
   line-height: 1.7;
 }
 
@@ -870,7 +1008,7 @@ input, textarea { font-family: var(--font); -webkit-tap-highlight-color: transpa
 /* ======================== */
 
 .dashboard {
-  padding: 40px;
+  padding: clamp(24px, 4vw, 40px);
   max-width: 1200px;
   margin: 0 auto;
 }
@@ -964,7 +1102,7 @@ input, textarea { font-family: var(--font); -webkit-tap-highlight-color: transpa
 /* ======================== */
 
 .course-detail {
-  padding: 40px;
+  padding: clamp(24px, 4vw, 40px);
   max-width: 900px;
   margin: 0 auto;
 }
@@ -1073,7 +1211,7 @@ input, textarea { font-family: var(--font); -webkit-tap-highlight-color: transpa
 .lesson-page {
   max-width: 1000px;
   margin: 0 auto;
-  padding: 24px 40px;
+  padding: clamp(16px, 3vw, 24px) clamp(16px, 4vw, 40px);
 }
 
 .video-container {
@@ -1205,7 +1343,7 @@ input, textarea { font-family: var(--font); -webkit-tap-highlight-color: transpa
 /* ======================== */
 
 .account-page {
-  padding: 40px;
+  padding: clamp(24px, 4vw, 40px);
   max-width: 700px;
   margin: 0 auto;
 }
@@ -1386,28 +1524,42 @@ input, textarea { font-family: var(--font); -webkit-tap-highlight-color: transpa
 /* ======================== */
 
 .footer {
-  padding: 40px;
-  border-top: 1px solid var(--border);
-  text-align: center;
-  background: var(--bg-primary);
+  padding: clamp(20px, 3vw, 32px) clamp(20px, 4vw, 40px);
+  background: #000000;
+  border-top: 1px solid #27272a;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.footer-right {
+  text-align: right;
 }
 
 .footer-logo {
-  height: 48px;
-  margin-bottom: 12px;
+  height: 80px;
 }
 
 .footer-brand {
   font-family: var(--font-heading);
-  font-size: 20px;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  margin-bottom: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--text-primary);
 }
 
 .footer-text {
   font-size: 13px;
-  color: var(--text-muted);
+  color: #a1a1aa;
+  line-height: 1.6;
+}
+
+.footer-tagline {
+  font-size: 14px;
+  color: var(--accent);
+  font-weight: 700;
+  line-height: 1.6;
 }
 
 .footer-links {
@@ -1443,7 +1595,8 @@ input, textarea { font-family: var(--font); -webkit-tap-highlight-color: transpa
 /* RESPONSIVE */
 /* ======================== */
 
-@media (max-width: 900px) {
+/* Tablet */
+@media (max-width: 1024px) {
   .courses-grid,
   .pricing-grid,
   .dashboard-grid {
@@ -1454,22 +1607,24 @@ input, textarea { font-family: var(--font); -webkit-tap-highlight-color: transpa
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .hero-title {
-    font-size: 3.75rem;
-  }
-
   .hero-stats {
     gap: 12px;
   }
 
   .hero-stat {
-    min-width: 140px;
+    min-width: 120px;
+    padding: 10px 16px;
+  }
+
+  .nav-logo img {
+    height: 60px !important;
   }
 }
 
-@media (max-width: 640px) {
+/* Large mobile / small tablet */
+@media (max-width: 768px) {
   .nav {
-    padding: 12px 20px;
+    justify-content: space-between;
   }
 
   .nav-links {
@@ -1487,13 +1642,28 @@ input, textarea { font-family: var(--font); -webkit-tap-highlight-color: transpa
     backdrop-filter: blur(24px);
     -webkit-backdrop-filter: blur(24px);
     border-bottom: 1px solid var(--border);
-    padding: 16px 20px;
-    gap: 8px;
+    padding: 20px;
+    gap: 12px;
     animation: slideDown 0.3s ease-out;
+    align-items: stretch;
+  }
+
+  .nav-links.open .nav-link {
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-links.open .btn {
+    text-align: center;
+    margin-top: 8px;
   }
 
   .nav-mobile-toggle {
     display: block;
+  }
+
+  .nav-logo img {
+    height: 50px !important;
   }
 
   .courses-grid,
@@ -1507,19 +1677,6 @@ input, textarea { font-family: var(--font); -webkit-tap-highlight-color: transpa
     gap: 8px;
   }
 
-  .hero {
-    padding: 80px 20px;
-  }
-
-  .hero-title {
-    font-size: 2.25rem;
-    line-height: 1;
-  }
-
-  .hero-subtitle {
-    font-size: 16px;
-  }
-
   .hero-stats {
     flex-direction: column;
     align-items: center;
@@ -1528,38 +1685,23 @@ input, textarea { font-family: var(--font); -webkit-tap-highlight-color: transpa
 
   .hero-stat {
     width: 100%;
-    max-width: 280px;
+    max-width: 300px;
   }
 
-  .section {
-    padding: 48px 20px;
+  .hero-subtitle {
+    font-size: 16px;
   }
 
-  .section-title {
-    font-size: 28px;
-  }
-
-  .documentary-section {
-    padding: 48px 20px;
+  .hero-desc {
+    font-size: 14px;
   }
 
   .documentary-title {
-    font-size: 28px;
-  }
-
-  .cta-section {
-    padding: 48px 20px;
+    font-size: clamp(24px, 5vw, 36px);
   }
 
   .cta-title {
-    font-size: 28px;
-  }
-
-  .dashboard,
-  .course-detail,
-  .lesson-page,
-  .account-page {
-    padding: 24px 16px;
+    font-size: clamp(24px, 5vw, 36px);
   }
 
   .auth-card {
@@ -1576,9 +1718,42 @@ input, textarea { font-family: var(--font); -webkit-tap-highlight-color: transpa
 
   .lesson-nav-btn {
     flex: 1;
+    text-align: center;
   }
 
-  .training-item {
-    padding: 12px 16px;
+  .training-list {
+    grid-template-columns: 1fr;
+  }
+
+  .pricing-card {
+    padding: 24px;
+  }
+
+  .checkout-steps {
+    margin-top: 24px;
+  }
+
+  .btn-lg {
+    padding: 12px 20px;
+    font-size: 14px;
+  }
+}
+
+/* Small mobile */
+@media (max-width: 400px) {
+  .credentials-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-stat {
+    max-width: 100%;
+  }
+
+  .nav-logo img {
+    height: 40px !important;
+  }
+
+  .credential-item {
+    padding: 16px;
   }
 }
