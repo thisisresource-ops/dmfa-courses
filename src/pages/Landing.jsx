@@ -12,7 +12,7 @@ export default function Landing() {
         backgroundPosition: 'center top',
       }}>
         <h1 className="hero-title">
-          Elite Muay Thai<br />Training
+          Elite Muay Thai Training
         </h1>
         <p className="hero-subtitle">
           {config.heroSubtitle}
